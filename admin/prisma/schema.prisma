@@ -1,0 +1,54 @@
+// Минимальная схема: только то, что реально нужно редактировать через админку.
+// Услуги, статистика, порядок работы, контакты — захардкожены в коде лендинга.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model PortfolioCase {
+  id        Int              @id @default(autoincrement())
+  customer  String
+  task      String
+  solution  String
+  order     Int              @default(0)
+  createdAt DateTime         @default(now())
+  images    PortfolioImage[]
+}
+
+model PortfolioImage {
+  id      Int           @id @default(autoincrement())
+  url     String
+  order   Int           @default(0)
+  case    PortfolioCase @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseId  Int
+}
+
+model ContactRequest {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  createdAt DateTime @default(now())
+}
+
+// Картинки для блоков услуг на лендинге (slug: signs | plaques | entry | complex).
+// Сами тайтлы и тексты живут в коде фронта — здесь только медиа.
+model ServiceImage {
+  id    Int    @id @default(autoincrement())
+  slug  String
+  url   String
+  order Int    @default(0)
+
+  @@index([slug])
+}

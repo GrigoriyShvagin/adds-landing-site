@@ -1,0 +1,23 @@
+{
+  "name": "ads-landing-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Лендинг рекламной компании + админ-панель",
+  "workspaces": [
+    "frontend",
+    "admin",
+    "shared"
+  ],
+  "scripts": {
+    "dev:frontend": "npm --workspace frontend run dev",
+    "dev:admin": "npm --workspace admin run dev",
+    "build:frontend": "npm --workspace frontend run build",
+    "build:admin": "npm --workspace admin run build",
+    "db:migrate": "npm --workspace admin run db:migrate",
+    "db:studio": "npm --workspace admin run db:studio",
+    "create-admin": "npm --workspace admin run create-admin"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

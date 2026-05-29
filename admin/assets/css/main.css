@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+html, body, #__nuxt {
+  height: 100%;
+}
+
+body {
+  @apply bg-surface text-ink-900 font-sans antialiased;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition;
+  }
+  .btn-primary {
+    @apply btn bg-ink-700 text-white hover:bg-ink-600;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-500;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-600/20 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent;
+  }
+  .card {
+    @apply rounded-2xl bg-white p-6 shadow-sm;
+  }
+}

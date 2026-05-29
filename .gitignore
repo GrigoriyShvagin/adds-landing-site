@@ -1,0 +1,15 @@
+node_modules
+.nuxt
+.output
+dist
+.env
+*.log
+.DS_Store
+
+# Prisma
+admin/prisma/*.db
+admin/prisma/*.db-journal
+
+# Uploads (генерится локально)
+admin/uploads/*
+!admin/uploads/.gitkeep

@@ -1,0 +1,9 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@ads/shared": ["../shared/types.ts"],
+      "@ads/shared/*": ["../shared/*"]
+    }
+  }
+}
