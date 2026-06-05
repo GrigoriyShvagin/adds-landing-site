@@ -20,12 +20,14 @@ export interface ContactRequest {
   id: number
   name: string
   phone: string
+  email?: string
   createdAt: string
 }
 
 export interface ContactRequestInput {
   name: string
   phone: string
+  email?: string
 }
 
 export interface AdminUser {

@@ -2,9 +2,10 @@
 import { prisma } from '~/server/utils/prisma'
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody<{ name?: string; phone?: string }>(event)
+  const body = await readBody<{ name?: string; phone?: string; email?: string }>(event)
   const name = body.name?.trim()
   const phone = body.phone?.trim()
+  const email = body.email?.trim() || undefined
 
   if (!name || !phone) {
     throw createError({ statusCode: 400, statusMessage: 'Имя и телефон обязательны' })
@@ -13,6 +14,6 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Слишком длинные значения' })
   }
 
-  const created = await prisma.contactRequest.create({ data: { name, phone } })
+  const created = await prisma.contactRequest.create({ data: { name, phone, email } })
   return { id: created.id }
 })

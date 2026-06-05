@@ -6,7 +6,7 @@ export function useAdminApi() {
   return {
     base,
     portfolio: () => $fetch(`${base}/api/portfolio`),
-    submitRequest: (body: { name: string; phone: string }) =>
+    submitRequest: (body: { name: string; phone: string; email?: string }) =>
       $fetch(`${base}/api/requests`, { method: 'POST', body }),
     imageUrl: (path: string) =>
       path.startsWith('http') ? path : `${base}${path}`,

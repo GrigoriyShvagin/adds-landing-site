@@ -26,6 +26,7 @@ function fmt(date: string) {
           <th class="pb-3">Дата</th>
           <th class="pb-3">Имя</th>
           <th class="pb-3">Телефон</th>
+          <th class="pb-3">Email</th>
           <th></th>
         </tr>
       </thead>
@@ -36,6 +37,7 @@ function fmt(date: string) {
           <td class="py-3">
             <a :href="`tel:${r.phone}`" class="text-accent hover:underline">{{ r.phone }}</a>
           </td>
+          <td class="py-3 text-sm">{{ r.email || '—' }}</td>
           <td class="py-3 text-right">
             <button class="btn-danger" @click="remove(r.id)">Удалить</button>
           </td>
