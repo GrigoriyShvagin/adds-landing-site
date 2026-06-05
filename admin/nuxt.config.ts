@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'node:url'
-
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: false },
@@ -17,7 +15,7 @@ export default defineNuxtConfig({
     publicAssets: [
       {
         baseURL: '/uploads',
-        dir: fileURLToPath(new URL('./uploads', import.meta.url)),
+        dir: '/opt/adds-landing-site/admin/uploads',
         maxAge: 60 * 60 * 24,
       },
     ],
