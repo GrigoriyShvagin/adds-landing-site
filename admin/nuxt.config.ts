@@ -26,6 +26,9 @@ export default defineNuxtConfig({
     head: {
       title: 'Админ-панель',
       meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/logo-icon.png' },
+      ],
     },
   },
 })

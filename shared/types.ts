@@ -34,8 +34,9 @@ export interface AdminUser {
 }
 
 // Картиночные секции лендинга, редактируемые из админки.
-// signs/plaques/entry/complex — галереи на /uslugi, poryadok — одна картинка на /poryadok.
-export type ServiceSlug = 'signs' | 'plaques' | 'entry' | 'complex' | 'poryadok'
+// signs/plaques/entry/complex — галереи на /uslugi, poryadok — одна картинка на /poryadok,
+// hero — фоновый слайдер в шапке главной (меняется раз в 5 секунд с crossfade).
+export type ServiceSlug = 'signs' | 'plaques' | 'entry' | 'complex' | 'poryadok' | 'hero'
 
 export interface ServiceImagesBySlug {
   signs: string[]
@@ -43,4 +44,5 @@ export interface ServiceImagesBySlug {
   entry: string[]
   complex: string[]
   poryadok: string[]
+  hero: string[]
 }

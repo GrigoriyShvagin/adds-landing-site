@@ -30,14 +30,14 @@ export default <Partial<Config>>{
         sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Шкала из Figma
-        'display': ['80px', { lineHeight: '1.1', fontWeight: '600' }],
-        'h2': ['44px', { lineHeight: '1.15', fontWeight: '700' }],
-        'h3': ['24px', { lineHeight: '1.3', fontWeight: '700' }],
-        'lead': ['36px', { lineHeight: '1', fontWeight: '400' }],
-        'body-lg': ['24px', { lineHeight: '1.4', fontWeight: '400' }],
-        'body': ['20px', { lineHeight: '1.35', fontWeight: '400' }],
-        'caption': ['18px', { lineHeight: '1.4', fontWeight: '400' }],
+        // Шкала из Figma — fluid с clamp(min, vw, max) чтобы плавно ужиматься на мобилке.
+        'display': ['clamp(40px, 8vw, 80px)', { lineHeight: '1.1', fontWeight: '600' }],
+        'h2': ['clamp(28px, 4.4vw, 44px)', { lineHeight: '1.15', fontWeight: '700' }],
+        'h3': ['clamp(20px, 2.4vw, 24px)', { lineHeight: '1.3', fontWeight: '700' }],
+        'lead': ['clamp(22px, 3.8vw, 36px)', { lineHeight: '1.15', fontWeight: '400' }],
+        'body-lg': ['clamp(16px, 2.2vw, 24px)', { lineHeight: '1.45', fontWeight: '400' }],
+        'body': ['clamp(15px, 1.7vw, 20px)', { lineHeight: '1.4', fontWeight: '400' }],
+        'caption': ['clamp(14px, 1.6vw, 18px)', { lineHeight: '1.4', fontWeight: '400' }],
       },
       maxWidth: {
         'shell': '1320px', // ширина внутреннего контейнера

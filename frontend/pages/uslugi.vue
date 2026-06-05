@@ -39,7 +39,7 @@ const services: { slug: ServiceSlug; title: string; description: string; imageCo
 
 const { base } = useAdminApi()
 const { data: images } = await useFetch<ServiceImagesBySlug>(`${base}/api/services`, {
-  default: () => ({ signs: [], plaques: [], entry: [], complex: [] }),
+  default: () => ({ signs: [], plaques: [], entry: [], complex: [], poryadok: [], hero: [] }),
 })
 </script>
 

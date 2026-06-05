@@ -14,7 +14,7 @@ body {
 
 @layer components {
   .shell {
-    @apply mx-auto max-w-shell px-8;
+    @apply mx-auto max-w-shell px-4 sm:px-6 lg:px-8;
   }
   .nav-link {
     @apply text-body text-white/90 hover:text-white transition;

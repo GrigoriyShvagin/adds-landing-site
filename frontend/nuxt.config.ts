@@ -22,6 +22,9 @@ export default defineNuxtConfig({
             'Изготавливаем вывески, таблички, оформление входных групп и комплексное оформление с 2005 года. 10 000+ проектов.',
         },
       ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/logo-icon.png' },
+      ],
     },
   },
 })
