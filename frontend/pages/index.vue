@@ -2,7 +2,7 @@
 import type { ServiceImagesBySlug } from '@ads/shared'
 
 const { base } = useAdminApi()
-const { data } = await useFetch<ServiceImagesBySlug>(`${base}/api/services`, {
+const { data } = useLazyFetch<ServiceImagesBySlug>(`${base}/api/services`, {
   default: () => ({ signs: [], plaques: [], entry: [], complex: [], poryadok: [], hero: [] }),
 })
 const heroImages = computed(() => data.value?.hero ?? [])

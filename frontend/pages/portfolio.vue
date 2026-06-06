@@ -2,7 +2,7 @@
 import type { PortfolioCase } from '@ads/shared'
 
 const api = useAdminApi()
-const { data: cases } = await useAsyncData<PortfolioCase[]>('portfolio', () => api.portfolio() as Promise<PortfolioCase[]>)
+const { data: cases } = useLazyAsyncData<PortfolioCase[]>('portfolio', () => api.portfolio() as Promise<PortfolioCase[]>, { default: () => [] })
 
 // Локальные индексы текущего слайда для каждого кейса
 const slides = ref<Record<number, number>>({})
