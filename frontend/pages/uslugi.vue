@@ -37,14 +37,44 @@ const services: { slug: ServiceSlug; title: string; description: string; imageCo
   },
 ]
 
-const { base } = useAdminApi()
+const { base, imageUrl } = useAdminApi()
 const { data: images, pending } = useLazyFetch<ServiceImagesBySlug>(`${base}/api/services`, {
   default: () => ({ signs: [], plaques: [], entry: [], complex: [], poryadok: [], hero: [] }),
 })
+
+// Загрузчик висит пока не пришли данные И не прогрузились сами картинки —
+// чтобы пользователь не видел смену пустых блоков на фото.
+const loading = ref(true)
+
+function preload(urls: string[]) {
+  return Promise.all(
+    urls.map(
+      (u) =>
+        new Promise<void>((resolve) => {
+          const img = new Image()
+          img.onload = img.onerror = () => resolve()
+          img.src = u
+        }),
+    ),
+  )
+}
+
+watch(
+  pending,
+  async (isPending) => {
+    if (isPending) return
+    const urls = services.flatMap((s) => (images.value?.[s.slug] ?? []).map((u) => imageUrl(u)))
+    // Страховка: не держим экран дольше 3.5с, даже если картинка зависла.
+    await Promise.race([preload(urls), new Promise((r) => setTimeout(r, 3500))])
+    loading.value = false
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
   <div>
+    <PageLoader :show="loading" />
     <AppHeader />
     <ServiceSection
       v-for="s in services"
@@ -54,7 +84,6 @@ const { data: images, pending } = useLazyFetch<ServiceImagesBySlug>(`${base}/api
       :image-count="s.imageCount"
       :columns="s.columns"
       :images="images?.[s.slug] ?? []"
-      :loading="pending"
     />
     <ContactForm />
   </div>
