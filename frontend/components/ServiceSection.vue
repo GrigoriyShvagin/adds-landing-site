@@ -5,6 +5,7 @@ const props = defineProps<{
   images: string[]
   imageCount: number
   columns?: 2 | 3
+  loading?: boolean
 }>()
 
 const { imageUrl } = useAdminApi()
@@ -20,7 +21,15 @@ const { imageUrl } = useAdminApi()
         class="grid gap-3 sm:gap-4"
         :class="columns === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 sm:grid-cols-3'"
       >
-        <template v-if="images.length === 0">
+        <template v-if="loading">
+          <div
+            v-for="i in imageCount"
+            :key="'skeleton-' + i"
+            class="placeholder-img animate-pulse"
+            :class="columns === 2 ? 'aspect-[586/377]' : 'aspect-[387/236]'"
+          />
+        </template>
+        <template v-else-if="images.length === 0">
           <div
             v-for="i in imageCount"
             :key="i"

@@ -38,7 +38,7 @@ const services: { slug: ServiceSlug; title: string; description: string; imageCo
 ]
 
 const { base } = useAdminApi()
-const { data: images } = useLazyFetch<ServiceImagesBySlug>(`${base}/api/services`, {
+const { data: images, pending } = useLazyFetch<ServiceImagesBySlug>(`${base}/api/services`, {
   default: () => ({ signs: [], plaques: [], entry: [], complex: [], poryadok: [], hero: [] }),
 })
 </script>
@@ -54,6 +54,7 @@ const { data: images } = useLazyFetch<ServiceImagesBySlug>(`${base}/api/services
       :image-count="s.imageCount"
       :columns="s.columns"
       :images="images?.[s.slug] ?? []"
+      :loading="pending"
     />
     <ContactForm />
   </div>

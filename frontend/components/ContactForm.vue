@@ -2,7 +2,6 @@
 const api = useAdminApi()
 const name = ref('')
 const phone = ref('')
-const email = ref('')
 const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
 const errorMsg = ref<string | null>(null)
 
@@ -11,11 +10,10 @@ async function submit() {
   status.value = 'sending'
   errorMsg.value = null
   try {
-    await api.submitRequest({ name: name.value, phone: phone.value, email: email.value || undefined })
+    await api.submitRequest({ name: name.value, phone: phone.value })
     status.value = 'sent'
     name.value = ''
     phone.value = ''
-    email.value = ''
   } catch (e: any) {
     status.value = 'error'
     errorMsg.value = e?.data?.statusMessage || 'Не удалось отправить'
@@ -30,18 +28,12 @@ async function submit() {
         <h3 class="text-[20px] sm:text-[22px] lg:text-[24px] font-medium leading-tight mb-5 lg:mb-6 text-[#3F3B3A]">
           Оставьте свои контакты, мы с Вами свяжемся!
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4">
           <input
             v-model="name"
             class="text-caption bg-transparent border-b border-[#3F3B3A]/40 text-[#3F3B3A] placeholder-[#3F3B3A]/70 py-2 outline-none focus:border-[#3F3B3A]"
             placeholder="Имя"
             required
-          />
-          <input
-            v-model="email"
-            type="email"
-            class="text-caption bg-transparent border-b border-[#3F3B3A]/40 text-[#3F3B3A] placeholder-[#3F3B3A]/70 py-2 outline-none focus:border-[#3F3B3A]"
-            placeholder="example@email.ru"
           />
           <input
             v-model="phone"
@@ -61,6 +53,7 @@ async function submit() {
       </form>
 
       <div class="lg:col-span-5 order-1 lg:order-2 text-left lg:text-right">
+        <a href="mailto:example@mail.ru" class="text-[18px] sm:text-[20px] font-medium block text-[#3F3B3A] mb-1 hover:underline">example@mail.ru</a>
         <a href="tel:+79600481629" class="text-[20px] sm:text-[22px] font-medium block text-[#3F3B3A]">+7 (960) 048-16-29</a>
         <div class="flex justify-start lg:justify-end gap-2 mt-3">
           <a href="https://t.me/" target="_blank" class="w-10 h-10 rounded-full bg-[#272036] flex items-center justify-center hover:opacity-90 overflow-hidden">
