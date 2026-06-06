@@ -64,10 +64,10 @@ async function submit() {
         <a href="tel:+79600481629" class="text-[20px] sm:text-[22px] font-medium block text-[#3F3B3A]">+7 (960) 048-16-29</a>
         <div class="flex justify-start lg:justify-end gap-2 mt-3">
           <a href="https://t.me/" target="_blank" class="w-10 h-10 rounded-full bg-[#272036] flex items-center justify-center hover:opacity-90 overflow-hidden">
-            <img src="/tg.png" alt="Telegram" class="w-full h-full object-cover" />
+            <img :src="'/tg.png'" alt="Telegram" class="w-full h-full object-cover" />
           </a>
           <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-[#272036] flex items-center justify-center hover:opacity-90 overflow-hidden">
-            <img src="/max.png" alt="Max" class="w-full h-full object-cover" />
+            <img :src="'/max.png'" alt="Max" class="w-full h-full object-cover" />
           </a>
         </div>
       </div>
