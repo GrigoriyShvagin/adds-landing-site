@@ -53,7 +53,7 @@ async function submit() {
       </form>
 
       <div class="lg:col-span-5 order-1 lg:order-2 text-left lg:text-right">
-        <a href="mailto:example@mail.ru" class="text-[18px] sm:text-[20px] font-medium block text-[#3F3B3A] mb-1 hover:underline">example@mail.ru</a>
+        <a href="mailto:v_elena_reklama@mail.ru" class="text-[18px] sm:text-[20px] font-medium block text-[#3F3B3A] mb-1 hover:underline">v_elena_reklama@mail.ru</a>
         <a href="tel:+79600481629" class="text-[20px] sm:text-[22px] font-medium block text-[#3F3B3A]">+7 (960) 048-16-29</a>
         <div class="flex justify-start lg:justify-end gap-2 mt-3">
           <a href="https://t.me/" target="_blank" class="w-10 h-10 rounded-full bg-[#272036] flex items-center justify-center hover:opacity-90 overflow-hidden">

@@ -59,6 +59,8 @@ function preload(urls: string[]) {
   )
 }
 
+const route = useRoute()
+
 watch(
   pending,
   async (isPending) => {
@@ -67,6 +69,11 @@ watch(
     // Страховка: не держим экран дольше 3.5с, даже если картинка зависла.
     await Promise.race([preload(urls), new Promise((r) => setTimeout(r, 3500))])
     loading.value = false
+    // Прокрутка к нужной услуге выполняется только после загрузки картинок,
+    // иначе высота блоков ещё меняется и якорь промахивается.
+    await nextTick()
+    const slug = route.hash.slice(1)
+    if (slug) document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' })
   },
   { immediate: true },
 )
@@ -79,6 +86,7 @@ watch(
     <ServiceSection
       v-for="s in services"
       :key="s.slug"
+      :id="s.slug"
       :title="s.title"
       :description="s.description"
       :image-count="s.imageCount"

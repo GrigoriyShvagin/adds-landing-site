@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
+  id?: string
   title: string
   description: string
   images: string[]
@@ -12,7 +13,7 @@ const { imageUrl } = useAdminApi()
 </script>
 
 <template>
-  <section class="py-12 sm:py-16 lg:py-20 first:pt-16 sm:first:pt-20 lg:first:pt-28">
+  <section :id="id" class="scroll-mt-24 py-12 sm:py-16 lg:py-20 first:pt-16 sm:first:pt-20 lg:first:pt-28">
     <div class="shell">
       <h2 class="text-h2 mb-3 sm:mb-4 lg:mb-5">{{ title }}</h2>
       <p class="text-body-lg text-white/85 max-w-[1200px] mb-8 sm:mb-10 lg:mb-14 whitespace-pre-line">{{ description }}</p>
